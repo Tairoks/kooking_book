@@ -7,6 +7,7 @@ from .models import Ingredients, Recipes
 class RecipesAdmin(admin.ModelAdmin):
     list_display = ("title",)
     readonly_fields = ("get_image",)
+    prepopulated_fields = {"slug": ("title",)}
 
     def get_image(self, obj):
         return mark_safe(f'<img src={obj.photo.url} width="100" height"110">')

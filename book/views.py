@@ -7,13 +7,13 @@ def index(request):
     return render(request, "base.html")
 
 
-def text_recipes(request):
-    return render(request, "recipes.html")
+# def text_recipes(request):
+#     return render(request, "recipes.html")
 
 
-def catalog_views(request):
+def recipes_views(request):
     recipes = Recipes.objects.all()
-    context ={
+    context = {
         "recipes": recipes
         }
     return render(request, "recipes.html", context=context)

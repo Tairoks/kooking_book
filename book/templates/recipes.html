@@ -1,9 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div>
-<h1>Title</h1>
-</div>
-
-{%endblock%}
+<div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+        {% for recipe in recipes %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card h-100 w-100" style="background-color: gray">
+              <div class="embed-responsive embed-responsive-16by9">
+                <img alt="#" class="mx-auto d-block" src="{{ recipe.photo.url }}"/>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{recipe.title}}</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" onclick="window.location.href={% url 'home' %}" class="btn btn-sm btn-outline-secondary">Open recipe</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Favourite</button>
+                </div>
+                <small class="text-body-secondary">{{recipe.time_cook}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

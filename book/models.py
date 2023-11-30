@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Ingredients(models.Model):
@@ -28,6 +29,10 @@ class Recipes(models.Model):
     def __str__(self):
         return f"{self.pk} - {self.title}"
 
+    def get_absolute_url(self):
+        return reverse("recipe_info", kwargs={"recipe_slug": self.slug})
+
     class Meta:
         verbose_name = 'Recipe'
         verbose_name_plural = 'Recipes'
+        ordering = ['created_at']

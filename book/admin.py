@@ -5,6 +5,7 @@ from .models import Ingredients, Recipes
 
 @admin.register(Recipes)
 class RecipesAdmin(admin.ModelAdmin):
+    """Registration of the Recipes model in the admin panel"""
     list_display = ("title",)
     readonly_fields = ("get_image",)
     prepopulated_fields = {"slug": ("title",)}
@@ -17,4 +18,5 @@ class RecipesAdmin(admin.ModelAdmin):
 
 @admin.register(Ingredients)
 class IngredientsAdmin(admin.ModelAdmin):
+    """Registering the Ingredients model in the admin panel"""
     list_display = ("title",)

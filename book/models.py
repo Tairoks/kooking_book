@@ -3,9 +3,15 @@ from django.urls import reverse
 
 
 class Ingredients(models.Model):
+    """Model for creating tables with ingredients"""
+    TYPE = [
+        ('g', 'gm.'),
+        ('p', 'pcs.')
+    ]
+
     title = models.CharField(max_length=100, verbose_name='Ingredient', default=None)
     quantity = models.IntegerField()
-    type = models.CharField(max_length=20, verbose_name='Type', default=None)
+    type = models.CharField(max_length=20, verbose_name='Type', choices=TYPE, default='g')
 
     def __str__(self):
         return f"{self.title}"
@@ -16,11 +22,12 @@ class Ingredients(models.Model):
 
 
 class Recipes(models.Model):
+    """Model for creating tables with recipes"""
     title = models.CharField(max_length=255, verbose_name='Recipe')
     photo = models.ImageField('Photo', upload_to='photo/', default='default.png')
     ingredients = models.ManyToManyField(Ingredients, related_name='Ingredients')
     cooking = models.TextField(verbose_name='Cooking method')
-    time_cook = models.TimeField(verbose_name='Cooking time')
+    time_cook = models.CharField(max_length=10, verbose_name='Cooking time')
     slug = models.SlugField(unique=True)
 
     created_at = models.DateTimeField(verbose_name='Created at', auto_now_add=True)

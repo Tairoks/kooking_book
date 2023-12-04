@@ -2,11 +2,16 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+import logging
+from .decorators import unauthenticated_user
+
+logger = logging.getLogger('recipe_logger')
 
 
+@unauthenticated_user
 def register_user(request):
+    """User registration function"""
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
@@ -18,7 +23,7 @@ def register_user(request):
                 else:
                     messages.info(request, f"Yhe user with username {username} has been registered")
             except User.DoesNotExist as error:
-                return HttpResponse(error) #logger.error(error)
+                logger.error(error)
             form.save()
             messages.info(request, f'The user {username} has been registered')
             return redirect('login')
@@ -28,8 +33,9 @@ def register_user(request):
     return render(request, 'register.html', context=context)
 
 
+@unauthenticated_user
 def login_user(request):
-    # breakpoint()
+    """User authentication"""
     if request.method == 'POST':
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -39,10 +45,11 @@ def login_user(request):
             return redirect('home')
         else:
             messages.info(request, 'Username or password do not match')
-            # logger.info('Username or password do not match')
+            logger.info('Username or password do not match')
     return render(request, 'login.html')
 
 
 def logout_user(request):
+    """Unauthenticated"""
     logout(request)
     return redirect('home')

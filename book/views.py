@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse , redirect
 from django.http import HttpResponseNotFound, HttpResponseRedirect
-from .models import Recipes
-from .form import AddRecipe
+from .models import Recipes, Ingredients
+from .forms import AddRecipe
 
 
 def index(request):
@@ -50,14 +50,24 @@ def favourite_list(request):
 
 
 def add_recipe(request):
+    form = AddRecipe()
+    # breakpoint()
     if request.method == "POST":
-        form = AddRecipe(request.POST, request.FILES)
+        form = AddRecipe(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('recipes')
-    else:
-        form = AddRecipe()
-    return render(request, 'add_recipe.html', )
+            data = form.cleaned_data
+            recipe = Recipes.objects.first()
+            recipe.title = data["title"]
+            recipe.cooking = data["cooking"]
+            recipe.time_cook = data["time_cook"]
+            recipe.creator = request.user
+            recipe.slug = {"slug": ("title",)}
+            recipe.save()
+
+    context = {
+        'form': form
+    }
+    return render(request, "add_recipe.html", context=context)
 
 
 def pageNotFound(request, exception):

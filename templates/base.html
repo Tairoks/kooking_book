@@ -36,7 +36,6 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="{% url 'home' %}" class="nav-link px-2 text-white">Home</a></li>
           <li><a href="{% url 'recipes' %}" class="nav-link px-2 text-white">Recipes</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
         {% endif %}
 
@@ -47,8 +46,10 @@
                     <img src="{{ request.user.profile_user.avatar.url }}" alt="mdo" width="32" height="32" class="rounded-circle">
                   </a>
                   <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'user_page' %}">Profile</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'add_recipe' %}">Add recipe</a></li>
+                      <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'favourites_list' %}">Favourites</a></li>
                       <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
@@ -76,13 +77,10 @@
 
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+    <p class="col-md-4 mb-0 text-body-dark fs-4">© 2023 Company, Inc</p>
 
     <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-3 text-dark fs-4">Home</a></li>
     </ul>
   </footer>
 </div>

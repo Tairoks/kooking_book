@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class Ingredients(models.Model):
@@ -29,6 +30,7 @@ class Recipes(models.Model):
     cooking = models.TextField(verbose_name='Cooking method')
     time_cook = models.CharField(max_length=10, verbose_name='Cooking time')
     slug = models.SlugField(unique=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Creator', null=True, blank=True)
 
     created_at = models.DateTimeField(verbose_name='Created at', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Updated at', auto_now=True)

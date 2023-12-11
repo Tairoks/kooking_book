@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Add form</h1>
-<a>text</a>
-
+{% if user.is_authenticated %}
+  <div class="container">
+    <form class="" action="{% url 'add_recipe' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="class=btn btn-outline-light me-2">Select</button>
+      <button type="button" onclick="window.location.href={% url 'recipes' %}" class="class=btn btn-outline-light me-2">Recipes</button>
+    </form>
+  </div>
+{% else %}
+  {% url 'home' %}
+{% endif %}
 {% endblock %}

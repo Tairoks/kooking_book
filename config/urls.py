@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', book_views.index, name='home'),
     path('recipes/', include('book.urls')),
+    path('profile/', include('profiles.urls')),
     path('login/', profiles_views.login_user, name='login'),
     path('logout/', profiles_views.logout_user, name='logout'),
     path('register/', profiles_views.register_user, name='register'),

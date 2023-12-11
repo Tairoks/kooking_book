@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 import logging
 from .decorators import unauthenticated_user
+from .models import Profile
+from book.models import Recipes
 
 logger = logging.getLogger('recipe_logger')
 
@@ -53,3 +55,13 @@ def logout_user(request):
     """Unauthenticated"""
     logout(request)
     return redirect('home')
+
+
+def user_page(request):
+    profile_ = Profile.objects.filter(user__pk=request.user.pk).first()
+    recipes = Recipes.objects.filter()
+    context = {
+        "profile": profile_,
+        "recipes": recipes
+    }
+    return render(request, 'profile.html', context=context)

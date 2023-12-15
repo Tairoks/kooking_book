@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse , redirect
 from django.http import HttpResponseNotFound, HttpResponseRedirect
+from django.views.generic import ListView
 from .models import Recipes, Ingredients
-from .forms import AddRecipe
+from .forms import AddRecipe, SearchForm
 
 
 def index(request):
@@ -9,13 +10,17 @@ def index(request):
     return render(request, "base.html")
 
 
-def recipes_views(request):
-    """Function of presenting all recipes"""
-    recipes = Recipes.objects.all()
-    context = {
-        "recipes": recipes
-        }
-    return render(request, "recipes.html", context=context)
+class RecipesListView(ListView):
+    model = Recipes
+    template_name = "recipes.html"
+    context_object_name = "recipes"
+
+    def get_queryset(self):
+        return Recipes.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 def recipe_info(request, recipe_slug):
@@ -51,23 +56,60 @@ def favourite_list(request):
 
 def add_recipe(request):
     form = AddRecipe()
-    # breakpoint()
     if request.method == "POST":
+        # breakpoint()
         form = AddRecipe(request.POST)
         if form.is_valid():
-            data = form.cleaned_data
-            recipe = Recipes.objects.first()
-            recipe.title = data["title"]
-            recipe.cooking = data["cooking"]
-            recipe.time_cook = data["time_cook"]
-            recipe.creator = request.user
-            recipe.slug = {"slug": ("title",)}
-            recipe.save()
-
+            obj = form.save(commit=False)
+            obj.creator = request.user
+            obj.save()
+            return redirect('recipes')
     context = {
         'form': form
     }
     return render(request, "add_recipe.html", context=context)
+
+
+def search_recipe(request):
+    form = SearchForm()
+    if request.method == "POST":
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data()
+            title = data['title']
+            rec = Recipes.objects.filter(title=title)
+            context = {
+                "form": form,
+                "recipes": rec
+            }
+            return render(request, 'recipes.html', context=context)
+    context = {
+        "form": form
+    }
+    return render(request, 'recipes.html', context=context)
+
+
+def recipe_delete(request, get_recipe):
+    recipe = Recipes.objects.get(id=get_recipe)
+    recipe.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+def edit_recipe(request, recipe_id):
+    form = Recipes.objects.get(id=recipe_id)
+    form_ = AddRecipe(request.POST, instance=form)
+    if request.method == "POST":
+        # breakpoint()
+        if form_.is_valid():
+            obj = form_.save(commit=False)
+            obj.creator = request.user
+            obj.save()
+            form_.save_m2m()
+            return redirect('recipes')
+    context = {
+        'form': form_
+    }
+    return render(request, "edit_recipe.html", context=context)
 
 
 def pageNotFound(request, exception):

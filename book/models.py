@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -40,6 +41,11 @@ class Recipes(models.Model):
 
     def get_absolute_url(self):
         return reverse("recipe_info", kwargs={"recipe_slug": self.slug})
+
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Recipe'

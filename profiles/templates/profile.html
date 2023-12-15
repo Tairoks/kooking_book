@@ -54,7 +54,10 @@
                 <tr>
                     <td>
                         {% for recipe in recipes %}
-                            <li>{{ recipe.title }}</li>
+                            <li>{{ recipe.title }}
+                                <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-sm btn-outline-dark">delete</a>
+                                <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-sm btn-outline-dark">edit</a>
+                            </li>
                         {% endfor %}
                     </td>
                 </tr>

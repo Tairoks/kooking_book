@@ -58,10 +58,12 @@ def logout_user(request):
 
 
 def user_page(request):
-    profile_ = Profile.objects.filter(user__pk=request.user.pk).first()
-    recipes = Recipes.objects.filter()
+    user_pk = request.user.pk
+    profile_ = Profile.objects.filter(user__pk=user_pk).first()
+    recipes = Recipes.objects.select_related().filter(creator__pk=user_pk)
+
     context = {
         "profile": profile_,
-        "recipes": recipes
+        "recipes": recipes,
     }
     return render(request, 'profile.html', context=context)

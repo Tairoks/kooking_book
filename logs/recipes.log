@@ -75,3 +75,4 @@
 2023-12-18 22:21:07,920 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
 2023-12-18 22:21:07,942 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
 2023-12-18 22:21:07,947 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 23:13:42,948 - INFO - Username or password do not match

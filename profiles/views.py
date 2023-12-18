@@ -58,6 +58,7 @@ def logout_user(request):
 
 
 def user_page(request):
+    """User page presentation function"""
     user_pk = request.user.pk
     profile_ = Profile.objects.filter(user__pk=user_pk).first()
     recipes = Recipes.objects.select_related().filter(creator__pk=user_pk)

@@ -1,16 +1,17 @@
 # kooking_book
 
 Usage
-Создаем окружение python -m venv venv
 
-source venv/bin/activate (для Linux)
+Creating a virtual environment python -m venv venv 
 
-venv/Scripts/activate (для Windows)
+source venv/bin/activate (for Linux)
 
-ставим пакеты pip install -r requirements.txt
+venv/Scripts/activate (for Windows)
 
-запуск python manage.py makemigrations
+install packages pip install -r requirements.txt
 
-запуск python manage.py runserver
+launch python manage.py makemigrations
 
-если не запустилась статика python manage.py collectstatic
+launch python manage.py runserver
+
+if static don't start python manage.py collectstatic

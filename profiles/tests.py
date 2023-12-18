@@ -28,5 +28,5 @@ class UserTestCase(TestCase):
 
     def test_form(self):
         # self.client.force_login(self.user)
-        response = self.client.get('/recipes/add')
+        response = self.client.get('/recipes/add/')
         assert response.status_code == 200

@@ -1,8 +1,13 @@
+import logging
+
 from django.shortcuts import render, HttpResponse , redirect
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.views.generic import ListView
 from .models import Recipes, Ingredients
 from .forms import AddRecipe, SearchForm
+
+
+logger = logging.getLogger('recipe_logger')
 
 
 def index(request):
@@ -11,6 +16,7 @@ def index(request):
 
 
 class RecipesListView(ListView):
+    """model representation class Recipes"""
     model = Recipes
     template_name = "recipes.html"
     context_object_name = "recipes"
@@ -55,14 +61,15 @@ def favourite_list(request):
 
 
 def add_recipe(request):
+    """Add recipe function"""
     form = AddRecipe()
     if request.method == "POST":
-        # breakpoint()
         form = AddRecipe(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.creator = request.user
             obj.save()
+            logger.info(f"Recipe {obj.title} created by {request.user}")
             return redirect('recipes')
     context = {
         'form': form
@@ -70,46 +77,41 @@ def add_recipe(request):
     return render(request, "add_recipe.html", context=context)
 
 
-def search_recipe(request):
-    form = SearchForm()
-    if request.method == "POST":
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data()
-            title = data['title']
-            rec = Recipes.objects.filter(title=title)
-            context = {
-                "form": form,
-                "recipes": rec
-            }
-            return render(request, 'recipes.html', context=context)
-    context = {
-        "form": form
-    }
-    return render(request, 'recipes.html', context=context)
-
-
 def recipe_delete(request, get_recipe):
+    """Button to delete a recipe"""
     recipe = Recipes.objects.get(id=get_recipe)
     recipe.delete()
+    logger.info(f"Recipe by {recipe.creator} removed {recipe.title}")
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def edit_recipe(request, recipe_id):
+    """Button to edit recipe"""
     form = Recipes.objects.get(id=recipe_id)
     form_ = AddRecipe(request.POST, instance=form)
     if request.method == "POST":
-        # breakpoint()
         if form_.is_valid():
             obj = form_.save(commit=False)
             obj.creator = request.user
             obj.save()
             form_.save_m2m()
+            logger.info(f"Recipe {obj.title} edited {request.user}")
             return redirect('recipes')
     context = {
         'form': form_
     }
     return render(request, "edit_recipe.html", context=context)
+
+
+def search_recipe(request):
+    """Search recipes by name"""
+    query = request.GET.get('q')
+    recipes = Recipes.objects.filter(title__icontains=query)
+    context = {
+        "recipes": recipes
+    }
+
+    return render(request, "search_recipe.html", context=context)
 
 
 def pageNotFound(request, exception):

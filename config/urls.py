@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', profiles_views.login_user, name='login'),
     path('logout/', profiles_views.logout_user, name='logout'),
     path('register/', profiles_views.register_user, name='register'),
+    path('search/', book_views.search_recipe, name='search_recipe'),
 ]
 
 if settings.DEBUG:

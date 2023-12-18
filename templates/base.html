@@ -66,8 +66,8 @@
   </nav>
   <header class="py-10">
     <div class="container flex-wrap justify-content-center py-4">
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" action="{% url 'search_recipe' %}" method="get">
+        <input name="q" type="text" class="form-control form-control-dark text-dark" placeholder="Search..." aria-label="Search">
       </form>
     </div>
   </header>

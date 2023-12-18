@@ -17,6 +17,7 @@ from .models import Recipes, Ingredients
 
 
 class AddRecipe(forms.ModelForm):
+    """Form for adding and editing a recipe"""
     class Meta:
         model = Recipes
         fields = ["title", "photo", "ingredients", "cooking", "creator", "time_cook"]
@@ -24,35 +25,7 @@ class AddRecipe(forms.ModelForm):
             "creator": forms.HiddenInput()
         }
 
-        # widgets = {
-        #     'title': forms.TextInput(
-        #         attrs={
-        #             "class": "form-control rounded-4",
-        #             "style": "max-width: 300px",
-        #             "placeholder": "Title"
-        #         }),
-        #     'photo': forms.FileInput(
-        #         attrs={
-        #             "class": "form-control rounded-4",
-        #             "style": "max-width: 300px",
-        #             "placeholder": "Choose file ..."
-        #         }
-        #     ),
-        #     'ingredients': IngredientsAdd,
-        #     'cooking': forms.Textarea(
-        #         attrs={
-        #             "class": "form-control rounded-4",
-        #             "style": "max-width: 300px",
-        #             "placeholder": "Cooking method"
-        #         }),
-        #     'time_cook': forms.TimeInput(
-        #         attrs={
-        #             "class": "form-control rounded-4",
-        #             "style": "max-width: 300px",
-        #             "placeholder": "Cooking time"
-        #         }),
-        # }
-
 
 class SearchForm(forms.Form):
+    """Recipe search form"""
     title = forms.CharField(max_length=100)

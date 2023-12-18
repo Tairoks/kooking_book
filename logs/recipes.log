@@ -17,3 +17,61 @@
 2023-12-11 22:40:16,224 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
 2023-12-11 22:40:16,590 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
 2023-12-11 22:40:16,596 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 21:05:15,016 - INFO - Recipe  created by Alex name
+2023-12-18 21:05:54,370 - INFO - Recipe  created by Alex name
+2023-12-18 21:07:59,473 - INFO - Recipe <QueryDict: {'csrfmiddlewaretoken': ['rAm7c59XNKwYLekl6L6HOlQe9aN5boQ5JIiVZwA0PveeVIJytER7jhsgpFespICa'], 'title': ['test5'], 'photo': [''], 'ingredients': ['1'], 'cooking': ['test5'], 'time_cook': ['5'], 'creator': ['']}> created by Alex name
+2023-12-18 21:11:05,528 - INFO - Recipe <QueryDict: {}> created by Alex
+2023-12-18 21:13:34,169 - INFO - Recipe created by test9
+2023-12-18 21:14:22,958 - INFO - Recipe byAlex delete test8
+2023-12-18 21:16:44,783 - INFO - Recipe by Alex removed test7
+2023-12-18 21:16:45,064 - INFO - Recipe by Alex removed test6
+2023-12-18 21:16:45,381 - INFO - Recipe by Alex removed test5
+2023-12-18 21:16:45,831 - INFO - Recipe by Alex removed test4
+2023-12-18 21:16:46,148 - INFO - Recipe by Alex removed test3
+2023-12-18 21:16:47,363 - INFO - Recipe by Alex removed test2
+2023-12-18 21:18:33,175 - INFO - Recipe test2 created by Alex
+2023-12-18 21:20:44,706 - INFO - profile for user Gosha has been created
+2023-12-18 22:14:54,700 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:14:54,721 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:14:55,221 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:14:55,226 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:15:35,539 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:15:35,557 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:15:35,778 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:15:35,783 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:16:49,947 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:16:49,964 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:16:50,183 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:16:50,188 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:49,296 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:49,312 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:49,531 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:49,537 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:55,407 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:55,425 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:55,648 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:18:55,653 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:04,463 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:04,479 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:04,696 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:04,702 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:44,084 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:44,100 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:44,104 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:19:44,109 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:00,849 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:00,865 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:00,968 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:00,973 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:28,833 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:28,849 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:28,871 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:28,876 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:33,786 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:33,803 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:33,824 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:20:33,830 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:21:07,904 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:21:07,920 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:21:07,942 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
+2023-12-18 22:21:07,947 - INFO - profile for user {'username': 'test_user', 'password': 't49q3;uGU'} has been created
